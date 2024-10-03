@@ -11,14 +11,15 @@ namespace lab3
                 Console.WriteLine("Введіть натуральне число n:");
                 int n = int.Parse(Console.ReadLine());
                 if (n <= 0)
-                    throw new Exception("Введено не натуральне число");
-
+                    Console.WriteLine("Не натуральне число");
                 Console.WriteLine("Введіть дійсне число x:");
                 double x = double.Parse(Console.ReadLine());
 
-                double result = 1;
-                for (int i = 1; i < n; i++) {
+                double result = 0;
+                int i = 1;
+                while(i <= n) {
                     result += Math.Pow(x, i)/i;
+                    i++;
                 }
                 Console.WriteLine("Відповідь: " + result);
             }
@@ -34,7 +35,7 @@ namespace lab3
                 int iteration = 1;
                 double current = 0;
 
-                while (accuracy > e) {
+                do {
                     current = Math.Pow(-1, iteration)*(1/(Math.Pow(2, iteration) + iteration*x));
 
                     sum += current;
@@ -43,6 +44,7 @@ namespace lab3
 
                     iteration ++;
                 }
+                while (accuracy > e);
 
                 Console.WriteLine("-------------------------------------------");
                 Console.WriteLine("Номер ітерації: " + iteration);
